@@ -3,28 +3,180 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Mobile first */
-.wrapper {
-  min-height: 100vh;
-  min-width: calc(100vw - (100vw - 100%));
+body {
+  background-color: #1e1e1e;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #222;
+  justify-content: center;
+  min-height: 100vh;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #111;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
-  color: #fff;
+  color: #f1c40f;
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-top: 60px;
 }
 
-#output {
-  width: 80%;
-  margin-top: 25px;
-  padding: 30px;
-  border-radius: 5px;
-  background-color: #fff;
+#players-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
 }
+
+#players-list li {
+  font-size: 1.4em;
+  margin: 10px 0;
+  background: #f1f1f1;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #000;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 800px;
+  margin-top: 100px;
+  padding: 30px;
+  background-color: #030824;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.teams-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.team-card {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.team-card h3 {
+  color: #f1c40f;
+}
+
+.players-btn {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  background-color: #ffcc00;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.players-btn:hover {
+  background-color: #e6b800;
+}
+
+/* Modalas */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 320px;
+  width: 80%;
+  max-height: 70vh;
+  overflow-y: auto;
+  position: relative;
+  margin-top: 80px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.close-btn {
+  font-size: 1.8em;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #333;
+  background: none;
+  border: none;
+}
+
+/* Mobile First */
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+    padding: 15px;
+  }
+  .teams-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .team-card {
+    width: 90%;
+  }
+  .modal-content {
+    width: 95%;
+  }
+}
+
+@media (min-width: 768px) {
+  .team-card {
+    width: 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-card {
+    width: 30%;
+  }
+}
+
