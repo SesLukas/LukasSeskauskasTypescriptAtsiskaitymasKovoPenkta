@@ -3,28 +3,118 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Mobile first */
-.wrapper {
-  min-height: 100vh;
-  min-width: calc(100vw - (100vw - 100%));
+body {
+  background-color: #1e1e1e;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #222;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #111;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-  color: #fff;
+  color: #f1c40f;
+  font-size: 32px;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1000px;
+  margin-top: 80px;
+  padding: 20px;
+  background-color: #030824;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+h2 {
+  color: #f39c12;
+  margin-bottom: 15px;
 }
 
 #output {
-  width: 80%;
-  margin-top: 25px;
-  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.team-card {
+  background: #9b0d3c;
+  padding: 15px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0px 3px 5px rgba(240, 238, 238, 0.664);
+  transition: transform 0.3s ease-in-out;
+}
+
+.team:hover {
+  transform: scale(1.05);
+}
+
+.team h3 {
+  color: #e74c3c;
+  margin-bottom: 10px;
+}
+
+.players-list {
+  list-style: none;
+  padding: 0;
+}
+
+.players-list li {
+  background: #eb691f;
+  margin: 5px 0;
+  padding: 5px;
   border-radius: 5px;
-  background-color: #fff;
+  transition: background 0.3s;
+}
+
+.players-list li:hover {
+  background: #99bfd8;
+}
+
+footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #111;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+/* Mobile First */
+@media (min-width: 600px) {
+  .wrapper {
+    width: 80%;
+  }
+
+  #output {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 900px) {
+  .wrapper {
+    width: 70%;
+  }
 }
