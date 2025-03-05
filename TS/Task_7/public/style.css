@@ -14,6 +14,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 header {
@@ -30,16 +31,18 @@ header {
 h1 {
   color: #f1c40f;
   font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .wrapper {
   width: 90%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin-top: 80px;
-  padding: 20px;
+  padding: 25px;
   background-color: #030824;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.6);
   text-align: center;
 }
 
@@ -51,61 +54,92 @@ h2 {
 #output {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
   justify-content: center;
 }
 
-.team-card {
-  background: #9b0d3c;
-  padding: 15px;
-  border-radius: 8px;
+.team {
+  background: linear-gradient(135deg, #9b0d3c, #ff5733);
+  padding: 20px;
+  border-radius: 12px;
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   text-align: center;
-  box-shadow: 0px 3px 5px rgba(240, 238, 238, 0.664);
-  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 5px 10px rgba(240, 238, 238, 0.5);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .team:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0px 7px 15px rgba(255, 255, 255, 0.3);
 }
 
 .team h3 {
-  color: #e74c3c;
-  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
 }
 
-.players-list {
+.player-list {
   list-style: none;
   padding: 0;
+  width: 100%;
 }
 
-.players-list li {
+.player-list li {
   background: #eb691f;
-  margin: 5px 0;
-  padding: 5px;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-list li:hover {
+  background: #ff8c42;
+  transform: scale(1.05);
+}
+
+.more-info {
+  text-decoration: none;
+  background-color: #3498db;
+  color: white;
+  padding: 5px 10px;
   border-radius: 5px;
+  font-size: 14px;
   transition: background 0.3s;
 }
 
-.players-list li:hover {
-  background: #99bfd8;
+.more-info:hover {
+  background-color: #2980b9;
 }
 
 footer {
   margin-top: 20px;
-  padding: 10px;
+  padding: 12px;
   background-color: #111;
   width: 100%;
   text-align: center;
   position: fixed;
   bottom: 0;
+  color: white;
+  font-size: 14px;
 }
 
 /* Mobile First */
 @media (min-width: 600px) {
   .wrapper {
-    width: 80%;
+    width: 85%;
   }
 
   #output {
@@ -115,6 +149,6 @@ footer {
 
 @media (min-width: 900px) {
   .wrapper {
-    width: 70%;
+    width: 75%;
   }
 }

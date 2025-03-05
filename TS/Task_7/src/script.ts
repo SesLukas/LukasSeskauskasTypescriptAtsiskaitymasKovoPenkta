@@ -6,52 +6,76 @@ nurodomas komandos pavadinimas ir papildomose "mini kortelėse" išvardinti žai
 Pastaba: Informacija apie komandas bei žaidėjus turi turėti bent minimalų stilių;
 -------------------------------------------------------------------------- */
 
-const ENDPOINT = 'NBA.json';
-document.addEventListener("DOMContentLoaded", async () => {
+const ENDPOINT = './../NBA.json';
+
+
+interface Player {
+    firstName: string;
+    lastName: string;
+    googleSearch: string;
+}
+
+interface Team {
+    name: string;
+    players: Player[];
+}
+
+interface NBAData {
+    teams: Team[];
+}
+
+async function fetchData() {
     try {
-        const response = await fetch("./../NBA.json");
-        const data = await response.json();
+        const response = await fetch(ENDPOINT);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+        const data: NBAData = await response.json();
         const output = document.getElementById("output");
-        
+
         if (!output) {
-            console.error("Output element not found!");
+            console.error("❌ Klaida: Output elementas nerastas!");
             return;
         }
-        
-        data.teams.forEach((team: { name: string, players: { firstName: string, lastName: string, googleSearch: string }[] }) => {
-            
+
+        output.innerHTML = ""; 
+
+        data.teams.forEach((team: Team) => {
             const teamCard = document.createElement("div");
-            teamCard.classList.add("team-card");
-            
-            const teamTitle = document.createElement("h2");
+            teamCard.classList.add("team");
+
+            const teamTitle = document.createElement("h3");
             teamTitle.textContent = team.name;
             teamCard.appendChild(teamTitle);
-            
-            
-            const playersList = document.createElement("div");
-            playersList.classList.add("players-list");
-            
-            team.players.forEach((player: { firstName: string, lastName: string, googleSearch: string }) => {
-                const playerCard = document.createElement("div");
-                playerCard.classList.add("player-card");
-                
-                const playerName = document.createElement("p");
+
+            const playersList = document.createElement("ul");
+            playersList.classList.add("player-list");
+
+            team.players.forEach((player: Player) => {
+                const playerItem = document.createElement("li");
+
+                const playerName = document.createElement("span");
                 playerName.textContent = `${player.firstName} ${player.lastName}`;
-                
+
                 const playerLink = document.createElement("a");
                 playerLink.href = player.googleSearch;
                 playerLink.textContent = "More Info";
                 playerLink.target = "_blank";
-                
-                playerCard.appendChild(playerName);
-                playerCard.appendChild(playerLink);
-                playersList.appendChild(playerCard);
+                playerLink.classList.add("more-info");
+
+                playerItem.appendChild(playerName);
+                playerItem.appendChild(playerLink);
+                playersList.appendChild(playerItem);
             });
-            
+
             teamCard.appendChild(playersList);
             output.appendChild(teamCard);
         });
+
+        console.log("✅ Duomenys sėkmingai atvaizduoti.");
     } catch (error) {
-        console.error("Error fetching data: ", error);
+        console.error("❌ Klaida: Nepavyko užkrauti duomenų.", error);
     }
-});
+}
+
+
+fetchData();

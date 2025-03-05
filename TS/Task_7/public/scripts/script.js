@@ -1,40 +1,45 @@
 "use strict";
-const ENDPOINT = 'NBA.json';
-document.addEventListener("DOMContentLoaded", async () => {
+const ENDPOINT = './../NBA.json';
+async function fetchData() {
     try {
-        const response = await fetch("./../NBA.json");
+        const response = await fetch(ENDPOINT);
+        if (!response.ok)
+            throw new Error(`HTTP error! Status: ${response.status}`);
         const data = await response.json();
         const output = document.getElementById("output");
         if (!output) {
-            console.error("Output element not found!");
+            console.error("❌ Klaida: Output elementas nerastas!");
             return;
         }
+        output.innerHTML = "";
         data.teams.forEach((team) => {
             const teamCard = document.createElement("div");
-            teamCard.classList.add("team-card");
-            const teamTitle = document.createElement("h2");
+            teamCard.classList.add("team");
+            const teamTitle = document.createElement("h3");
             teamTitle.textContent = team.name;
             teamCard.appendChild(teamTitle);
-            const playersList = document.createElement("div");
-            playersList.classList.add("players-list");
+            const playersList = document.createElement("ul");
+            playersList.classList.add("player-list");
             team.players.forEach((player) => {
-                const playerCard = document.createElement("div");
-                playerCard.classList.add("player-card");
-                const playerName = document.createElement("p");
+                const playerItem = document.createElement("li");
+                const playerName = document.createElement("span");
                 playerName.textContent = `${player.firstName} ${player.lastName}`;
                 const playerLink = document.createElement("a");
                 playerLink.href = player.googleSearch;
                 playerLink.textContent = "More Info";
                 playerLink.target = "_blank";
-                playerCard.appendChild(playerName);
-                playerCard.appendChild(playerLink);
-                playersList.appendChild(playerCard);
+                playerLink.classList.add("more-info");
+                playerItem.appendChild(playerName);
+                playerItem.appendChild(playerLink);
+                playersList.appendChild(playerItem);
             });
             teamCard.appendChild(playersList);
             output.appendChild(teamCard);
         });
+        console.log("✅ Duomenys sėkmingai atvaizduoti.");
     }
     catch (error) {
-        console.error("Error fetching data: ", error);
+        console.error("❌ Klaida: Nepavyko užkrauti duomenų.", error);
     }
-});
+}
+fetchData();
