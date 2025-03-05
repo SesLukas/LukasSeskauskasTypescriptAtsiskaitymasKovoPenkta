@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Task 8</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="./script.js" defer></script>
+    <script src="./scripts/script.js" defer></script>
   </head>
   <body>
     <header>
@@ -14,15 +14,28 @@
     <main>
       <div class="wrapper">
         <h1 class="headline">Length Units Converter</h1>
-        <!-- Users input -->
-        <form>
+    
+        <!-- Centruotas input laukas -->
+        <div class="input-container">
+          <label for="meter">Enter meters:</label>
           <input type="number" id="meter" name="meter" placeholder="Enter meters..." />
-        </form>
-        <!-- Place for output after entry change -->
-        <div id="output"></div>
+        </div>
+    
+        <!-- Vietos konvertuotiems rezultatams -->
+        <div id="output">
+          <p><strong id="meter-value">0</strong> m is equal to:</p>
+          <ul>
+            <li><span id="cm-value">0</span> cm</li>
+            <li><span id="inches-value">0</span> in</li>
+            <li><span id="feet-value">0</span> ft</li>
+            <li><span id="miles-value">0</span> mi</li>
+            <li><span id="yards-value">0</span> yd</li>
+          </ul>
+        </div>
       </div>
     </main>
-
+    
+    
     <footer>
       <!-- Footer code -->
     </footer>
